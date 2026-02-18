@@ -11,6 +11,9 @@ import Home from './frontend/components/Dashboard/Home';
 import History from './frontend/components/Dashboard/History';
 import Results from './frontend/components/Dashboard/Results';
 
+// Top Content Components
+import Download from './frontend/components/Dashboard/Download';
+
 // Navigation Components
 import AppBar from './frontend/components/Navigation/AppBar';
 import NavBar from './frontend/components/Navigation/NavBar';
@@ -75,6 +78,11 @@ function App() {
                     <Route path="/home" element={
                         <ProtectedRoute isLoggedIn={isLoggedIn}>
                             <Home />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/download" element={
+                        <ProtectedRoute isLoggedIn={isLoggedIn}>
+                            <Download />
                         </ProtectedRoute>
                     } />
                     <Route path="/history" element={

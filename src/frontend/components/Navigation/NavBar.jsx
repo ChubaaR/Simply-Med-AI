@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../App.css';
 import { NavLink } from 'react-router-dom';
-import { Home, User} from 'lucide-react';
+import { Home, Waves, Skull, Scan, User} from 'lucide-react';
 
 const NavBar = () => {
 

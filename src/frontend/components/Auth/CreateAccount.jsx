@@ -30,7 +30,7 @@ const CreateAccount = ({ onRegister }) => {
     };
 
     return (
-        <div className="screen" style={{ overflow: 'hidden', height: '200vh' }}>
+        <div className="screen" style={{ overflow: 'hidden', height: '200vh', backgroundColor: '#FFFFFF', position: 'fixed', width: '100vw', top: 0, left: 0 }}>
             <div className="auth-container">
                 <div className="auth-header" style={{ marginBottom: '20px' }}>
                     <img src={Logo} alt="SimplyMed Logo" className="login-brand-logo" />

@@ -250,14 +250,13 @@ body {
 
 .middle-content {
   flex: auto;
-  display: flex;
+  margin-top: 30%;
+  padding: 10px 20px;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: 80px; /* height of .app-bar */
-  margin-bottom: 60px; /* height of .bottom-nav */
-  min-height: calc(100vh - 80px - 60px);
   width: 100%;
   border-radius: 0;
-  background: linear-gradient(170deg, #ECD5FF 45%, #83b9fa 70%);
 }
 
 .bottom-nav {
@@ -293,6 +292,78 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* /////////////////////////////////////////////////////////////*/
+/* Heading Font Styles (Blood, XRay, CT Scan*/ 
+/* /////////////////////////////////////////////////////////////*/
+
+/* Home Heading Font Styles */
+.home-title {
+  font-family: arimo, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  background: linear-gradient(130deg, #155DFC 0%, #9810FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.home-subtitle {
+  font-family: arimo, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-gray);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+
+
+/* /////////////////////////////////////////////////////////////*/
+/* Download Container Styles */
+/* /////////////////////////////////////////////////////////////*/
+.download-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  margin: 30px auto;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+}
+
+.download-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
+  justify-content: flex-start;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.drop-report {
+  border: 2px dashed #C7C7D9;
+  border-radius: 12px;
+  background: #ffffff;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #6A7282;
+  position: relative;
 }
 
 

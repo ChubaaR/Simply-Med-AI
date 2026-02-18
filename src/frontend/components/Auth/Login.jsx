@@ -29,7 +29,7 @@ const Login = ({ onLogin }) => {
     };
 
     return (
-        <div className="screen" style={{ overflow: 'hidden', height: '200vh', backgroundColor: '#FFFFFF', position: 'relative' }}>
+        <div className="screen" style={{ overflow: 'hidden', height: '150vh', backgroundColor: '#FFFFFF', position: 'fixed', width: '100vw', top: 0, left: 0}}>
             <div className="auth-container">
                 <div className="auth-header">
                     <div className="auth-logo">
