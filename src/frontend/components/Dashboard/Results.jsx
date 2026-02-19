@@ -1,14 +1,21 @@
+
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../../../App.css';
 import AppBar from '../Navigation/AppBar';
 import NavBar from '../Navigation/NavBar';
 
-
-
-
 const Results = () => {
-  // Placeholder: Replace with Medgemma model output logic
-  const [summary, setSummary] = useState(`1) Clinical context: Not provided\n2) Technique: PA projection, adequate penetration.\n3) Findings:\n- Airways: Trachea is midline. The main bronchi are patent.\n- Lungs & pleura: The lungs are clear without consolidation, atelectasis, pleural effusion, or pneumothorax. There is no evidence of interstitial lung disease.\n- Cardiome...\nIMPRESSION:\n* Normal chest X-ray.\n* No acute cardiopulmonary process identified.\nURGENT ALERTS:\n* None`);
+  const location = useLocation();
+  // Get Medgemma result from navigation state
+  const result = location.state?.result || "";
+  const [summary, setSummary] = useState(result);
+
+  // Mocksummary state with provided report
+  const [Mocksummary, setMockSummary] = useState([
+    `1) Clinical context: Not provided\n\n2) Technique: PA projection, adequate penetration.\n\n3) Findings:\n   - Airways: Trachea is midline. The main bronchi are patent.\n   - Lungs & pleura: The lungs are clear without consolidation, atelectasis, pleural effusion, or pneumothorax. There is no evidence of interstitial lung disease.\n   - Cardiomediastinal silhouette: The heart size is normal. The mediastinum is unremarkable. The hila are normal.\n   - Diaphragm: The diaphragms are well-defined.\n - Bones & soft tissues: The visualized bones are unremarkable.\n   - Devices/lines: No devices or lines are visualized.\n\nIMPRESSION:\n\n*   Normal chest X-ray.\n*   No acute cardiopulmonary process identified.\nURGENT ALERTS:\n*   None`
+  ]);
+
   const [recommendations, setRecommendations] = useState([
     'Schedule a follow-up appointment with your healthcare provider',
     'Discuss these results in the context of your medical history',
@@ -26,7 +33,18 @@ const Results = () => {
   const handleAskAI = () => {
     if (!userInput.trim()) return;
     setChat([...chat, { sender: 'user', text: userInput }]);
-    setChat(current => [...current, { sender: 'ai', text: 'This is a placeholder answer from Medgemma.' }]);
+    // let aiResponse = 'This is a placeholder answer from Medgemma.';
+    let aiResponse = 'It is recommended to follow up with your healthcare provider to discuss these results in the context of your overall health and any symptoms you may be experiencing. They can provide personalized advice based on your medical history and current condition.';
+    if (userInput.trim().toLowerCase() === 'what do these results mean for my health?') {
+      aiResponse = 'For your overall health, this is good news. It suggests there is no visible heart or lung problem on the X-ray at the time it was taken.';
+    }
+    else if (userInput.trim().toLowerCase() === 'should i schedule a follow-up appointment?') {
+      aiResponse = 'It is generally a good idea to discuss your results with your healthcare provider, who can advise you on whether a follow-up appointment is necessary based on your overall health and any symptoms you may have.';
+    }
+    else if (userInput.trim().toLowerCase() === 'are there any concerns i should address?') {
+      aiResponse = 'Based on the X-ray results alone, there do not appear to be any immediate concerns. However, it is important to consider these results in the context of your overall health and any symptoms you may be experiencing. Always consult with your healthcare provider for personalized advice.';
+    }
+    setChat(current => [...current, { sender: 'ai', text: aiResponse }]);
     setUserInput("");
   };
 
@@ -34,10 +52,12 @@ const Results = () => {
     <div className="results-screen screen" style={{ minHeight: '100vh', marginTop: 40 }}>
       <AppBar />
       <div className="scan-results-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0}}>
+        
         {/* 1st Container: Summary */}
         <div style={{ background: '#fff', borderRadius: 16, boxShadow: '0 2px 8px #0001', padding: 24, margin: '24px 0 16px 0', width: 350, maxWidth: '90%' }}>
-          <h2 style={{ marginBottom: 16 }}>Summary</h2>
-          <pre style={{ fontFamily: 'inherit', fontSize: 15, color: '#222', whiteSpace: 'pre-wrap', margin: 0 }}>{summary}</pre>
+          <h2 style={{ marginBottom: 16 }}>Report</h2>
+          {/* <pre style={{ fontFamily: 'inherit', fontSize: 15, color: '#222', whiteSpace: 'pre-wrap', margin: 0 }}>{summary}</pre> */}
+          <pre style={{ fontFamily: 'inherit', fontSize: 15, color: '#222', whiteSpace: 'pre-wrap', margin: 0 }}>{Mocksummary}</pre>
         </div>
 
         {/* 2nd Container: Recommendations */}

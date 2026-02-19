@@ -18,31 +18,45 @@ const Download = () => {
   ];
   const navigate = useNavigate();
 
+  console.log("Download Component Mounted");
+
   // Handle Analyze button click
   const handleAnalyze = async () => {
+    // console.log("clicked Analyze");
+    // console.log("selectedFile:", selectedFile);
+    // console.log("reportType:", reportType);
+
     if (!selectedFile || !reportType) {
       alert("Please upload a file and select report type.");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("report_type", reportType);
+    // const formData = new FormData();
 
-    try {
-      const response = await fetch("https://rose-untoiling-wilfredo.ngrok-free.dev/", {
-        method: "POST",
-        body: formData,
-      });
+    // formData.append("file", selectedFile);
+    // // Map frontend report types to backend expected values
+    // const reportTypeMap = {
+    //   "blood-test": "blood",
+    //   "xray": "xray",
+    //   "ct-scan": "generic"
+    // };
+    // formData.append("report_type", reportTypeMap[reportType] || "generic");
 
-      const data = await response.json();
+    // try {
+    //   const response = await fetch("https://rose-untoiling-wilfredo.ngrok-free.dev/analyze", {
+    //     method: "POST",
+    //     body: formData,
+    //   });
 
-      // Navigate to results page for all report types
-      navigate("/results", { state: { result: data.report, reportType } });
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to generate report. Try again.");
-    }
+    //   const data = await response.json();
+
+    //   // Navigate to results page for all report types
+    //   navigate("/results", { state: { result: data.report, reportType } });
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   alert("Failed to generate report. Try again.");
+    // }
+      navigate("/results");
   };
 
 
@@ -51,6 +65,8 @@ const Download = () => {
     input.type = 'file';
     input.accept = '.pdf,.png,.jpg,.jpeg,.dcm, .webp';
     input.style.display = 'none';
+    input.name = 'file-upload';
+    input.id = 'file-upload';
 
     input.onchange = (e) => {
       // Handle file upload here
@@ -230,7 +246,10 @@ const Download = () => {
               marginBottom: 18,
               cursor: 'pointer',
             }}
-            onClick={handleAnalyze}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleAnalyze();
+            }}
           >
             Analyze Report
           </button>
