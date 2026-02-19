@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowLeft, Bell, EyeOff, Camera } from 'lucide-react';
+import { EyeOff, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../Navigation/NavBar';
 
 const EditProfile = () => {
     const navigate = useNavigate();
@@ -65,6 +66,7 @@ const EditProfile = () => {
                     </div>
                 </div>
             </div>
+        <NavBar />
         </div>
     );
 };
