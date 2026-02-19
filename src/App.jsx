@@ -37,7 +37,6 @@ const ProtectedRoute = ({ children, isLoggedIn }) => {
 
 function App() {
     const [showSplash, setShowSplash] = useState(true);
-    const [isDisabilityModalOpen, setIsDisabilityModalOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
         // Initialize state from local storage
         return localStorage.getItem('isLoggedIn') === 'true';
@@ -113,6 +112,7 @@ function App() {
                 {/* Show Bottom Nav only if logged in and not on auth pages */}
                 {isLoggedIn && !['/login', '/register'].includes(window.location.pathname) && (
                     <>
+                        <NavBar />
                         {/* Fixed Bottom Nav Container */}
                         <div style={{
                             position: 'fixed',
@@ -122,9 +122,6 @@ function App() {
                             zIndex: 100,
                             pointerEvents: 'none'
                         }}>
-                            <div style={{ pointerEvents: 'auto' }}>
-                                <NavBar onDisabilityClick={() => setIsDisabilityModalOpen(true)} />
-                            </div>
                         </div>
                     </>
                 )}
