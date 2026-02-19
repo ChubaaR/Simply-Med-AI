@@ -13,7 +13,7 @@ const Results = () => {
 
   // Mocksummary state with provided report
   const [Mocksummary, setMockSummary] = useState([
-    `1) Clinical context: Not provided\n\n2) Technique: PA projection, adequate penetration.\n\n3) Findings:\n   - Airways: Trachea is midline. The main bronchi are patent.\n   - Lungs & pleura: The lungs are clear without consolidation, atelectasis, pleural effusion, or pneumothorax. There is no evidence of interstitial lung disease.\n   - Cardiomediastinal silhouette: The heart size is normal. The mediastinum is unremarkable. The hila are normal.\n   - Diaphragm: The diaphragms are well-defined.\n - Bones & soft tissues: The visualized bones are unremarkable.\n   - Devices/lines: No devices or lines are visualized.\n\nIMPRESSION:\n\n*   Normal chest X-ray.\n*   No acute cardiopulmonary process identified.\nURGENT ALERTS:\n*   None`
+    `1) Clinical context: Not provided\n\n2) Technique: PA projection, adequate penetration.\n\n3) Findings:\n   - Airways: Trachea is midline. The main bronchi are patent.\n   - Lungs & pleura: The lungs are clear without consolidation, atelectasis, pleural effusion, or pneumothorax. There is no evidence of interstitial lung disease.\n   - Cardiomediastinal silhouette: The heart size is normal. The mediastinum is unremarkable. The hila are normal.\n   - Diaphragm: The diaphragms are well-defined.\n - Bones & soft tissues: The visualized bones are unremarkable.\n   - Devices/lines: No devices or lines are visualized.\n\nIMPRESSION:\n*  Normal chest X-ray.\n*  No acute cardiopulmonary process identified.\n\nURGENT ALERTS:\n*  None`
   ]);
 
   const [recommendations, setRecommendations] = useState([
