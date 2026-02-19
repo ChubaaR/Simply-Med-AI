@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Bell, Edit2, Mail, User, Phone, Bone, LogOut, Settings } from 'lucide-react';
+import { Edit2, Mail, User, Phone, LogOut, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AppBar from '../Navigation/AppBar';
 import NavBar from '../Navigation/NavBar';
@@ -88,6 +88,7 @@ const Profile = ({ onLogout }) => {
                     </button>
                 </div>
             </div>
+        <NavBar />
         </div>
     );
 };
